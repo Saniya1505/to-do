@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diary To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="nav-title">To-Do List</span>
+        </div>
+        <div class="nav-right">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact Us</a>
+        </div>
+    </nav>
+
+    <div class="diary-wrapper">
+        <div class="diary-container">
+            <div class="notebook">
+                <h1>My To-Do List</h1>
+                <div class="input-container">
+                    <input type="text" id="new-item" placeholder="Add a new task...">
+                    <button onclick="addItem()">Add</button>
+                </div>
+                <ul id="todo-list">
+                    <!-- List items will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addItem() {
+            const input = document.getElementById('new-item');
+            const ul = document.getElementById('todo-list');
+            const text = input.value.trim();
+
+            if (text !== '') {
+                const li = document.createElement('li');
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.onclick = function() { moveToEnd(this); };
+
+                const span = document.createElement('span');
+                span.textContent = text;
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.textContent = 'Delete';
+                deleteBtn.className = 'delete-btn';
+                deleteBtn.onclick = function() { deleteItem(this); };
+
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                li.appendChild(deleteBtn);
+                ul.appendChild(li);
+
+                input.value = '';
+            }
+        }
+
+        function moveToEnd(checkbox) {
+            const li = checkbox.parentNode;
+            const ul = li.parentNode;
+            li.classList.toggle('completed');
+            if (checkbox.checked) {
+                ul.appendChild(li);
+            } else {
+                ul.insertBefore(li, ul.firstChild);
+            }
+        }
+
+        function deleteItem(button) {
+            const li = button.parentNode;
+            li.remove();
+        }
+    </script>
+</body>
+</html>

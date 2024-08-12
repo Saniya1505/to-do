@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+
+body {
+    font-family: 'Caveat', cursive;
+    margin: 0;
+    padding: 0;
+    background: url('./background.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #6b4226;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.nav-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px; /* Reduced gap between options */
+    margin-right: 20px; /* Move the entire group to the left */
+}
+
+.nav-right a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+.nav-right a:hover {
+    color: #fdf0d5;
+}
+
+.diary-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 60px);
+    width: 100%;
+    padding: 10px;
+    margin-top: 60px;
+    box-sizing: border-box;
+}
+
+.diary-container {
+    width: 380px;
+    height: 550px;
+    background: #fdf0d5;
+    padding: 10px 20px 20px 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #c8a165;
+    background: radial-gradient(circle, #fdf0d5, #f5e1c5);
+}
+
+.notebook {
+    background: linear-gradient(to bottom, transparent 4%, #f5e1c5 4%) repeat-y;
+    background-size: 100% 30px;
+    padding: 20px 0;
+    border-radius: 10px;
+    height: 100%;
+    overflow-y: auto;
+    border-left: 2px dashed #c8a165;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center;
+    color: #6b4226;
+    font-weight: bold;
+    margin-top: 0;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #c8a165;
+    border-radius: 5px;
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    background-color: #fff;
+    color: #6b4226;
+}
+
+button {
+    width: 25%;
+    padding: 10px;
+    background-color: #6b4226;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #4f2e1b;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c8a165;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeIn 0.5s forwards;
+    color: #6b4226;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+li.completed span {
+    text-decoration: line-through;
+    color: #a68a67;
+}
+
+li.completed {
+    background-color: #f9f0e3;
+}
+
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.diary-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 25px;
+    height: 100%;
+    background: linear-gradient(to bottom, #c8a165 0%, #c8a165 25%, transparent 25%, transparent 75%, #c8a165 75%, #c8a165 100%);
+    transform: translateX(-50%);
+    z-index: 1;
+}
